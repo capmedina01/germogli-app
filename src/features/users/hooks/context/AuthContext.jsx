@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await apiLogin(email, password);
       setToken(data.token);
+      console.log(data);
       localStorage.setItem("token", data.token);
       setUser({ email });
       Swal.fire("¡Éxito!", "Inicio de sesión correcto", "success");

@@ -1,8 +1,48 @@
 import React from 'react'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../features/users/hooks/context/AuthContext'
 import { RiMailLockLine } from "react-icons/ri";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 export const LoginPage = () => {
+    const { handleLogin } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return Swal.fire("Error", "Todos los campos son obligatorios", "error");
+    }
+    await handleLogin(email, password);
+  };
+
+  return (
+    <div className="p-6 max-w-sm mx-auto bg-white shadow-md rounded-md">
+      <h2 className="text-lg font-bold">Iniciar sesión</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Correo"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-2 border rounded-md my-2"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-2 border rounded-md my-2"
+        />
+        <button type="submit" className="w-full bg-secondary text-white p-2 rounded-md">
+          Iniciar sesión
+        </button>
+      </form>
+    </div>
+  );
+
+    /*
   return (
     <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
     <h2 className="text-2xl font-bold text-center mb-6">Iniciar Sesion</h2>
@@ -38,5 +78,5 @@ export const LoginPage = () => {
         </div>
     </form>
 </div>
-  )
+  )*/
 }
