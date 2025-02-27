@@ -2,7 +2,7 @@ import React from 'react'
 import { RiMailLockLine } from "react-icons/ri";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-export const Register = () => {
+export const RegisterPage = () => {
   return (
     <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold text-center mb-6">Registro de Usuario</h2>
